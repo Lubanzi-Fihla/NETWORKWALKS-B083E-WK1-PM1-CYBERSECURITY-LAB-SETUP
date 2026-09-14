@@ -2,92 +2,132 @@
 
 ## Intern Details
 
-Name: Lubanzi Fihla
+**Name:** Lubanzi Fihla
 
-Program:
-NetworkWalks Cybersecurity Internship
+**Program:** NetworkWalks Cybersecurity Internship
+
+---
 
 ## Objective
 
-Build a Cybersecurity Lab using VirtualBox and Kali Linux.
+Build a Cybersecurity Lab using Oracle VirtualBox and Kali Linux.
+
+---
 
 ## Lab Requirements
 
 - VirtualBox Installed
-- NAT Network 10.0.0.0/24
+- NAT Network (10.0.0.0/24)
 - Kali Linux Installed
-- Static IP 10.0.0.2/24
+- Static IP Address (10.0.0.2/24)
 - Internet Connectivity
 - Shared Clipboard Enabled
 - Shared Folder Enabled
 
+---
+
 ## Steps Performed
 
 ### Step 1
-Installed VirtualBox.
+Installed Oracle VirtualBox.
 
 ### Step 2
-Created NAT Network 10.0.0.0/24.
+Created NAT Network `10.0.0.0/24`.
 
 ### Step 3
-Imported Kali Linux VM.
+Imported Kali Linux Virtual Machine.
 
 ### Step 4
-Configured network adapter to NAT Network.
+Configured Network Adapter to CyberLab NAT Network.
 
 ### Step 5
-Assigned static IP 10.0.0.2/24.
+Assigned Static IP Address:
+
+```text
+10.0.0.2/24
+Gateway: 10.0.0.1
+```
 
 ### Step 6
-Verified internet connectivity.
+Verified Internet Connectivity.
 
 ### Step 7
-Enabled clipboard and drag-and-drop.
+Enabled Shared Clipboard and Drag-and-Drop.
 
 ### Step 8
-Configured shared folder.
+Configured Shared Folder.
 
 ### Step 9
-Created VM snapshot.
+Created Virtual Machine Snapshot.
+
+---
 
 ## Screenshots
 
-### NAT Network Setup
+### Kali Linux Desktop Running Successfully
+![Kali Desktop](screenshots/01-Kali%20desktop%20runningpng
 
-screenshots/01-nat-network.png
+### NAT Network Configuration
+![NAT Network](screenshots/02-NAT%erLab.png
 
-### Kali Settings
+### Static IP Configuration
+![Static IP](screenshots/03-ip%20a%20displaying%2010.0.0.2%20
 
-![Settings](screenshots/02-kali-settings.png)
+### Default Gateway Connectivity Test
+![Gateway Ping](screenshots/04-Ping%20Default### Internet Connectivity Test (8.8.8.8)
+![Ping 8.8.8.8](screenshots/05-ping%208.8.8.8%20successful.png)
 
-s
+n Test
+![Ping Google](screenshots/06-ping%20googlehared Folder Configuration
+![Shared Folder](screenshots/07-Shared%20irtualBox VM Settings
+![VM Settings](screenshots/08-VirtualBoxs.png
 
-![IP](screens3-ip-address.png
-
-### Ping Test
-
-screenshots/04-ping-test.png
+---
 
 ## Lessons Learned
 
-- VirtualBox Networking
-- Kali Linux Configuration
-- Static IP Addressing
+- VirtualBox Network Configuration
+- Kali Linux Installation
+- Static IP Configuration
+- NAT Networking
+- DNS Troubleshooting
 - Virtual Machine Management
 - Snapshot Management
 
+---
+
 ## Troubleshooting
 
-Issue:
-Kali Linux had no internet access.
+### Problem
 
-Solution:
-Executed:
+Kali Linux could access IP addresses but could not resolve domain names.
 
-sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
+```bash
+ping google.com
+Temporary failure in name resolution
+```
 
-sudo nmcli connection down "Wired connection 1"
+### Root Cause
 
-sudo nmcli connection up "Wired connection 1"
+The DNS configuration file `/etc/resolv.conf` was missing.
 
-Internet connectivity was restored.
+### Solution
+
+Created the DNS configuration file and added:
+
+```text
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+```
+
+### Result
+
+- Gateway Connectivity: Successful 
+- Ping 8.8.8.8: Successful 
+- Ping google.com: Successful 
+
+---
+
+## Conclusion
+
+The Cybersecurity Lab was successfully configured using VirtualBox and Kali Linux. The environment now supports static addressing, Internet access, DNS resolution, shared folders, and virtual machine management.
